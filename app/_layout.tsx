@@ -1,24 +1,49 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Drawer } from "expo-router/drawer";
+import { StatusBar } from "expo-status-bar";
+import "react-native-reanimated";
+import React from "react";
+import CustomDrawerContent from "../components/CustomDrawerContent";
 
 export const unstable_settings = {
-  anchor: '(tabs)',
+  anchor: "home",
 };
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer
+        drawerContent={(props) => <CustomDrawerContent {...props} />}
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#8a2be2", // Vibrant purple header
+          },
+          headerTintColor: "#ffffff", // White header buttons/hamburger
+          headerTitleStyle: {
+            fontWeight: "bold",
+            fontSize: 20,
+          },
+          headerTitleAlign: "center",
+          drawerActiveTintColor: "#8a2be2",
+          drawerInactiveTintColor: "#333333",
+        }}
+      >
+        <Drawer.Screen
+          name="home"
+          options={{
+            title: "Home",
+            headerTitle: "Stack Navigation",
+          }}
+        />
+        <Drawer.Screen
+          name="settings"
+          options={{
+            title: "Settings",
+            headerTitle: "Account Settings",
+          }}
+        />
+      </Drawer>
+      <StatusBar style="light" />
+    </GestureHandlerRootView>
   );
 }
