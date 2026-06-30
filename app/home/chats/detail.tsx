@@ -37,7 +37,7 @@ export default function ChatDetailScreen() {
     },
     {
       id: '4',
-      text: 'See you later!',
+      text: 'Ayan, mas mabuti para mabilis natin ma-finalize.',
       sender: 'doctor',
     },
   ]);

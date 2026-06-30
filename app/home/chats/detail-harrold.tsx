@@ -22,22 +22,12 @@ export default function ChatDetailHarroldScreen() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello Doc! Magtatanong lang po sana ako tungkol sa schedule niyo',
+      text: 'Doc, na-finalize ko na po yung draft for our project.',
       sender: 'user',
     },
     {
       id: '2',
-      text: 'Good Day! Libre ako mamyang 2:00 PM onwrads.',
-      sender: 'doctor',
-    },
-    {
-      id: '3',
-      text: 'Sige po Doc!',
-      sender: 'user',
-    },
-    {
-      id: '4',
-      text: 'See you later!',
+      text: 'Sige, i-send mo na lang sa email ko yung draft.',
       sender: 'doctor',
     },
   ]);
